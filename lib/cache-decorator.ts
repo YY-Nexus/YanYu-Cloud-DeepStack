@@ -41,7 +41,7 @@ export function withCache<T extends (...args: any[]) => Promise<any>>(originalFu
 
       // 将结果存入缓存
       if (result && typeof result === "object" && result.success) {
-        await setToCache(service, cacheParams, result)
+        await setToCache(service, cacheParams, result, options.ttl)
       }
 
       return result
@@ -51,6 +51,32 @@ export function withCache<T extends (...args: any[]) => Promise<any>>(originalFu
       return await originalFunction(...args)
     }
   }) as T
+}
+
+/**
+ * 带TTL的缓存装饰器
+ * @param service 服务名称
+ * @param ttl 缓存时间（秒）
+ * @param options 缓存选项
+ */
+export function cacheWithTTL(service: string, ttl = 3600, options: Partial<CacheOptions> = {}) {
+  return <T extends (...args: any[]) => Promise<any>>(
+    target: any,
+    propertyName: string,
+    descriptor: PropertyDescriptor,
+  ) => {
+    const originalMethod = descriptor.value
+
+    const cacheOptions: CacheOptions = {
+      service,
+      ttl,
+      ...options,
+    }
+
+    descriptor.value = withCache(originalMethod, cacheOptions)
+
+    return descriptor
+  }
 }
 
 /**

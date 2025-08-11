@@ -3,7 +3,7 @@
  */
 
 import { getFromCache, setToCache } from "./cache-manager"
-import { enhancedRecordAPICall } from "./lib/enhanced-api-monitor"
+import { enhancedRecordAPICall } from "./enhanced-api-monitor"
 import { createAPIError, ErrorType } from "./error-handler"
 
 // 推荐类型

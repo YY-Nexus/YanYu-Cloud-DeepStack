@@ -31,6 +31,13 @@ export function generateId(): string {
   return Math.random().toString(36).substr(2, 9)
 }
 
+// 生成请求ID
+export function generateRequestId(): string {
+  const timestamp = Date.now().toString(36)
+  const randomStr = Math.random().toString(36).substring(2, 8)
+  return `req_${timestamp}_${randomStr}`
+}
+
 // 防抖函数
 export function debounce<T extends (...args: any[]) => any>(func: T, wait: number): (...args: Parameters<T>) => void {
   let timeout: NodeJS.Timeout

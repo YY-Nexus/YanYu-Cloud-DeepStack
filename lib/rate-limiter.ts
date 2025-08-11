@@ -163,6 +163,32 @@ export async function rateLimiter(req: NextRequest, service: string): Promise<Ne
 }
 
 /**
+ * 应用限流检查的装饰器函数
+ * @param service API服务名称
+ * @returns 装饰器函数
+ */
+export function applyRateLimit(service: string) {
+  return (target: any, propertyName: string, descriptor: PropertyDescriptor) => {
+    const method = descriptor.value
+
+    descriptor.value = async function (...args: any[]) {
+      const req = args[0] // 假设第一个参数是Request对象
+
+      if (req && typeof req === "object" && "headers" in req) {
+        const rateLimitResult = await rateLimiter(req, service)
+        if (rateLimitResult) {
+          return rateLimitResult
+        }
+      }
+
+      return method.apply(this, args)
+    }
+
+    return descriptor
+  }
+}
+
+/**
  * 初始化Redis客户端
  * 在应用启动时调用
  */
