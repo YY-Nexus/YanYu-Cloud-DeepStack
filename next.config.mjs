@@ -178,10 +178,11 @@ const nextConfig = {
 
 // 分析包大小
 if (process.env.ANALYZE === 'true') {
-  const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  const { default: withBundleAnalyzer } = await import('@next/bundle-analyzer')
+  const bundleAnalyzer = withBundleAnalyzer({
     enabled: true,
   })
-  module.exports = withBundleAnalyzer(nextConfig)
+  export default bundleAnalyzer(nextConfig)
 } else {
-  module.exports = nextConfig
+  export default nextConfig
 }
