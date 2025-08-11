@@ -2,7 +2,7 @@
 
 import { Component, type ErrorInfo, type ReactNode } from "react"
 import { ErrorDisplay } from "./error-display"
-import { Button } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { RefreshCw, Home } from "lucide-react"
 
 interface Props {

@@ -1,5 +1,6 @@
 // 统一导出所有自定义hooks
-export { useIsMobile, useMobile } from "./use-mobile"
+// 修复use-mobile导入路径，添加.tsx扩展名
+export { useIsMobile, useMobile } from "./use-mobile.tsx"
 export { useToast } from "./use-toast"
 export { useSafeDom } from "./use-safe-dom"
 export { useLocalStorage } from "./use-local-storage"
