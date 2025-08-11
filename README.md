@@ -1,5 +1,3 @@
-# YanYu-Cloud-DeepStack
-YanYu Cloud³ DeepStack
 # 言語云³ 深度堆栈全栈智创引擎
 
 **YanYu Cloud³ DeepStack Full-Stack Intelligent Creation Engine**
@@ -606,10 +604,10 @@ GOOGLE_ANALYTICS_ID=your_ga_id
 
 ## 📞 联系我们
 
-- **项目主页**: https://github.com/YY-Nexus/YanYu-Cloud-DeepStack.git
-- **问题反馈**: https://github.com/Y-Nexus/YanYu-Cloud-DeepStack/issues
-- **邮箱**: deepstack@0379.email
-- **官网**: https://deepstack.0379.pro
+- **项目主页**: https://github.com/your-org/yanyu-cloud3-deepstack
+- **问题反馈**: https://github.com/your-org/yanyu-cloud3-deepstack/issues
+- **邮箱**: contact@yanyu-cloud.com
+- **官网**: https://yanyu-cloud.com
 
 ---
 
