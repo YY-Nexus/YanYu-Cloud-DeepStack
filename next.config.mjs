@@ -176,13 +176,15 @@ const nextConfig = {
   },
 }
 
-// 分析包大小
-if (process.env.ANALYZE === 'true') {
-  const { default: withBundleAnalyzer } = await import('@next/bundle-analyzer')
-  const bundleAnalyzer = withBundleAnalyzer({
-    enabled: true,
-  })
-  export default bundleAnalyzer(nextConfig)
-} else {
-  export default nextConfig
+// 分析包大小配置
+const getConfig = async () => {
+  if (process.env.ANALYZE === 'true') {
+    const { default: withBundleAnalyzer } = await import('@next/bundle-analyzer')
+    return withBundleAnalyzer({
+      enabled: true,
+    })(nextConfig)
+  }
+  return nextConfig
 }
+
+export default nextConfig
